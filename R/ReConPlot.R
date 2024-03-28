@@ -255,7 +255,6 @@ ReConPlot <- function(sv,
   #----------------------------------------------------------------
   # process SV data
   #----------------------------------------------------------------
-  
   sv$pos1 <- as.integer(sv$pos1)
   sv$pos2 <- as.integer(sv$pos2)
   #sv$ori = paste0(sv$strand1,sv$strand2)
@@ -426,6 +425,7 @@ ReConPlot <- function(sv,
       karyo.filt=rbind(karyo.filt,karyo_subset)
     }
     karyotype_data_now = karyo.filt
+
   }
   
   # cnv.plot$chr = cnv.plot$chr
@@ -491,11 +491,11 @@ ReConPlot <- function(sv,
 	#cnv.plot$chr_f = factor(as.vector(cnv.plot$chr), levels=chr_selection$chr)
 
 
-  #define the breaks on the y axis (cn) to show:
+  # define the breaks on the y axis (cn) to show:
    if (max.cn < 8) {break.step = 1}
    else if (max.cn >= 8 & max.cn <= 20) {break.step = 2}
    else if (max.cn > 20 & max.cn <= 50) {break.step = 5}
-    else (break.step = 10)
+   else (break.step = 10)
    breaks_y = seq(0,max.cn, break.step)
   # breaks_y = c(0,1,2)
   # breaks_y = c(breaks_y, unique(floor(quantile(2:max_y, probs = seq(.1, .9, by = .1)))))
@@ -631,7 +631,9 @@ ReConPlot <- function(sv,
   #----------------------------------------------------------------
   # plot interchr SVs involving chrs in levels_chrs
   #----------------------------------------------------------------
+
   if (interFlag){
+
     # # first those involving the middle chromosome  ## missing those with other chrs
     idx= which(interSV$chr1 %in% chr_selection$chr & interSV$chr2 %in% chr_selection$chr)
 
@@ -827,8 +829,6 @@ ReConPlot <- function(sv,
       }
     }
   }
-  
-  
   #----------------------------------------------------------------------------
   # highlight genes
   #----------------------------------------------------------------------------
@@ -1002,7 +1002,5 @@ ReConPlot <- function(sv,
   }
   return(merged.p)
 }
-
-
 
 
